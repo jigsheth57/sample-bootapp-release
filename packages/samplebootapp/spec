@@ -1,0 +1,7 @@
+---
+name: samplebootapp
+
+dependencies: []
+
+files:
+  - fe-time-tracking-1.0.0.jar # From https://pcf-softwares-57.s3.amazonaws.com/fe-time-tracking-1.0.0.jar

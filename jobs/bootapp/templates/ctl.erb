@@ -1,0 +1,44 @@
+#!/bin/bash
+set +e
+set -xv
+
+RUN_DIR=/var/vcap/sys/run/bootapp
+LOG_DIR=/var/vcap/sys/log/bootapp
+PIDFILE=${RUN_DIR}/pid
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    export OPENJDK_HOME=/var/vcap/packages/openjdk/
+    export SAMPLE_BOOTAPP_PACKAGE=/var/vcap/packages/samplebootapp
+
+    pushd ${OPENJDK_HOME}
+    if [[ -d bin && `bin/java -Xmx64M -version 2>&1` =~ "OpenJDK 64-Bit Server" && $? == 0 ]]; then
+      export JAVA_BINARY=${OPENJDK_HOME}bin/java
+      cd ..
+    else
+      log_debug "JVM is not properly packaged"
+      exit 1
+    fi
+
+    exec $JAVA_BINARY -jar -Dserver.port=<%= p('listen_port') %> $SAMPLE_BOOTAPP_PACKAGE/fe-time-tracking-*.jar \
+      >>  $LOG_DIR/bootapp.stdout.log \
+      2>> $LOG_DIR/bootapp.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

@@ -1,0 +1,7 @@
+---
+name: openjdk
+
+dependencies: []
+
+files:
+  - openjdk-jdk-1.8.0_212-bionic.tar.gz # From https://pcf-softwares-57.s3.amazonaws.com/openjdk-jdk-1.8.0_212-bionic.tar.gz
