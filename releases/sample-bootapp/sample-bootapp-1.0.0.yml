@@ -1,0 +1,23 @@
+name: sample-bootapp
+version: 1.0.0
+commit_hash: 73e3c5f
+uncommitted_changes: false
+jobs:
+- name: bootapp
+  version: 44c5cfc24856dace5a2991292a2158d397f56b75c4c93593173b39e5707ea5ef
+  fingerprint: 44c5cfc24856dace5a2991292a2158d397f56b75c4c93593173b39e5707ea5ef
+  sha1: sha256:af18d9cfdb0c3a8b07456befdb89125c86e036771400cf5179def4917e30ffd6
+  packages:
+  - openjdk
+  - samplebootapp
+packages:
+- name: openjdk
+  version: 9caa72880ad479f776ed6cbe1b4e50e91db026d76548e3406bd272bb905c3df4
+  fingerprint: 9caa72880ad479f776ed6cbe1b4e50e91db026d76548e3406bd272bb905c3df4
+  sha1: sha256:6b68e5ddc0cac8002b9edb325cf9b12040359d2833433c816e486fe2f9797c5b
+  dependencies: []
+- name: samplebootapp
+  version: 2fa519f803e7b20c7b7a6ad000dc2e068faeb616ba70dd3d8ae3b5b3771f50eb
+  fingerprint: 2fa519f803e7b20c7b7a6ad000dc2e068faeb616ba70dd3d8ae3b5b3771f50eb
+  sha1: sha256:a0b26bf1073476602fee536b72bf6c5f90a793d5b237952f8153957a6841dc15
+  dependencies: []
